@@ -1,8 +1,33 @@
-# image-moderation-api
+# image-moderation-api (in progress...)
+
+`Express` server with endpoints ? that connects to a `postgresql` database.
+It uses `bcrypt` to store the passwords and `knex` to communicate with the database.
+
+## Database
+
+[insert diagram]
+
+## Dependencies
+
+- Node ?
+- Postgresql ?
 
 ## Development
 
+`$ git clone ...`
+`$ yarn install`
 `$ yarn start`
 
 Enter the details for your own database in server.js
-\*\* Make sure you use postgreSQL instead of mySQL for this code base.
+
+```
+const knex = require('knex')({
+  client: 'pg',
+  connection: {
+    host: 'hostName',
+    user: 'yourUsername',
+    password: 'yourPassword',
+    database: 'databaseName',
+  },
+});
+```
