@@ -1,4 +1,4 @@
-function handleSignin(req, res, knex, bcrypt) {
+const handleSignin = (knex, bcrypt) => (req, res) => {
   knex
     .select('email', 'hash')
     .from('login')
@@ -19,6 +19,6 @@ function handleSignin(req, res, knex, bcrypt) {
       }
     })
     .catch((err) => res.status(400).json('wrong credentials'));
-}
+};
 
 module.exports = { handleSignin };

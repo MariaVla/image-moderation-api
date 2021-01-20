@@ -30,15 +30,17 @@ app.get('/', function (req, res) {
   res.send('This is working');
 });
 
-app.post('/signin', (req, res) => signin.handleSignin(req, res, knex, bcrypt));
+// Option 1
+app.post('/signin', signin.handleSignin(knex, bcrypt));
 
+// Option 2
 app.post('/register', (req, res) =>
   register.handleRegister(req, res, knex, bcrypt, saltRounds)
 );
 
-app.get('/profile/:id', (req, res) => res.send('Work in progress.'));
-
 app.put('/image', (req, res) => imageSubmit.handleImageSubmit(req, res, knex));
+
+app.get('/profile/:id', (req, res) => res.send('Work in progress.'));
 
 app.get('*', (req, res) => res.json('not found'));
 
