@@ -42,6 +42,9 @@ app.put('/image', (req, res) => imageSubmit.handleImageSubmit(req, res, knex));
 app.post('/imageurl', (req, res) =>
   imageSubmit.handleApiCallModeration(req, res)
 );
+app.post('/imageurlfacedetect', (req, res) =>
+  imageSubmit.handleApiCallFaceDetect(req, res)
+);
 
 app.get('/profile/:id', (req, res) => res.send('Work in progress.'));
 
