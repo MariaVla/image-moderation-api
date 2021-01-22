@@ -1,7 +1,8 @@
 const Clarifai = require('clarifai');
+require('dotenv').config();
 
 const app = new Clarifai.App({
-  apiKey: '0c459b9dca5a4e54a65f2fded3c80fc7',
+  apiKey: process.env.CLARIFAI_API_KEY,
 });
 
 // Clarifai.MODERATION_MODEL defaults to the last onemptied,
