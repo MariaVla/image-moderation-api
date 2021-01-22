@@ -15,7 +15,9 @@ It uses `bcrypt` to store the passwords and `knex` to communicate with the datab
 ## Development
 
 `$ git clone ...`
+
 `$ yarn install`
+
 `$ yarn start`
 
 Enter the details for your own database in server.js
@@ -31,3 +33,7 @@ const knex = require('knex')({
   },
 });
 ```
+
+## Deploy
+
+The app lives in Heroku. Pushes to `main` will trigger a deploy.
