@@ -39,9 +39,12 @@ app.post('/register', (req, res) =>
 );
 
 app.put('/image', (req, res) => imageSubmit.handleImageSubmit(req, res, knex));
+app.post('/imageurl', (req, res) =>
+  imageSubmit.handleApiCallModeration(req, res)
+);
 
 app.get('/profile/:id', (req, res) => res.send('Work in progress.'));
 
 app.get('*', (req, res) => res.json('not found'));
 
-app.listen(3000);
+app.listen(3000, () => console.log('app is running on port 3000'));
