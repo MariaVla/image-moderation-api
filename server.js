@@ -50,4 +50,6 @@ app.get('/profile/:id', (req, res) => res.send('Work in progress.'));
 
 app.get('*', (req, res) => res.json('not found'));
 
-app.listen(3000, () => console.log('app is running on port 3000'));
+app.listen(process.env.PORT || 3000, () =>
+  console.log(`App is running in port: ${process.env.PORT || 3000}`)
+);
