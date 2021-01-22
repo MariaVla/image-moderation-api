@@ -12,7 +12,7 @@ const knex = require('knex')({
     ssl: {
       rejectUnauthorized: false,
     },
-    // For dev environment
+    // For dev database connection
     host: '127.0.0.1',
     user: '',
     password: '',
