@@ -28,10 +28,6 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', function (req, res) {
-  // knex
-  //   .select('*')
-  //   .from('users')
-  //   .then((data) => console.log(data));
   res.send('This is working');
 });
 

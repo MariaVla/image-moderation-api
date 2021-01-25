@@ -1,16 +1,21 @@
-# image-moderation-api (in progress...)
+# image-moderation-api
 
-`Express` server with endpoints ? that connects to a `postgresql` database.
+`Express` server that connects to a `postgresql` database.
 It uses `bcrypt` to store the passwords and `knex` to communicate with the database.
+
+It uses the [Clarifai API](https://www.clarifai.com/) to know if the image is safe or has nudity or drugs and detect if there is a face
+in the image.
+
+This can be adapted to use others models from [Clarifai](https://www.clarifai.com/model-gallery).
 
 ## Database
 
-[insert diagram]
+![Database](/images/database-dark-mode2.png)
 
 ## Dependencies
 
-- Node ?
-- Postgresql ?
+- Node 14.5.0
+- PostgreSQL 13
 
 ## Development
 
