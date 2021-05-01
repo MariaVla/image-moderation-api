@@ -8,15 +8,18 @@ const imageSubmit = require('./controllers/image');
 const knex = require('knex')({
   client: 'pg',
   connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: false,
-    },
+    connectionString:
+      process.env.DATABASE_URL || 'postgres://@localhost:5432/moderationApp',
+    ssl: process.env.DATABASE_URL
+      ? {
+          rejectUnauthorized: false,
+        }
+      : false,
     // For dev database connection
-    host: '127.0.0.1',
-    user: '',
-    password: '',
-    database: 'moderationApp',
+    // host: '127.0.0.1',
+    // user: '',
+    // password: '',
+    // database: 'moderationApp',
   },
 });
 
