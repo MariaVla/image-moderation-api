@@ -15,11 +15,6 @@ const knex = require('knex')({
           rejectUnauthorized: false,
         }
       : false,
-    // For dev database connection
-    // host: '127.0.0.1',
-    // user: '',
-    // password: '',
-    // database: 'moderationApp',
   },
 });
 

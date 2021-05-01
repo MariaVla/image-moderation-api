@@ -8,6 +8,8 @@ in the image.
 
 This can be adapted to use others models from [Clarifai](https://www.clarifai.com/model-gallery).
 
+You need to make and account and get an API key.
+
 ## Database
 
 ![Database](/images/database-dark-mode2.png)
@@ -25,19 +27,26 @@ This can be adapted to use others models from [Clarifai](https://www.clarifai.co
 
 `$ yarn start`
 
-Enter the details for your own database in server.js
+For this to work locally you need to create a database in postgresql. For this, you can execute the SQL queries in `database.sql`. After creating the database, you need to add your information in `server.js`.
+
+For Heroku, we are going to use `process.env.DATABASE_URL`.
 
 ```
 const knex = require('knex')({
   client: 'pg',
   connection: {
-    host: 'hostName',
-    user: 'yourUsername',
-    password: 'yourPassword',
-    database: 'databaseName',
+    connectionString:
+      process.env.DATABASE_URL || 'postgres://user:password@localhost:5432/databaseName',
+    ssl: process.env.DATABASE_URL
+      ? {
+          rejectUnauthorized: false,
+        }
+      : false,
   },
 });
 ```
+
+Make a `.env` file from `.env.sample` and add complete the keys.
 
 ## Deploy
 
