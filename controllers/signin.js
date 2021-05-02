@@ -30,7 +30,6 @@ const handleSignIn = (db, bcrypt, req, res) => {
 
 const getAuthTokenId = (req, res) => {
   const { authorization } = req.headers;
-  console.log(authorization);
   return redisClient.get(authorization, (err, reply) => {
     if (err || !reply) {
       return res.status(401).send('Unauthorized');
@@ -67,7 +66,6 @@ const createSession = (user) => {
 const signInAuthentication = (db, bcrypt) => (req, res) => {
   const { authorization } = req.headers;
 
-  console.log('signInAuthentication', authorization);
   return authorization
     ? getAuthTokenId(req, res)
     : handleSignIn(db, bcrypt, req, res)
@@ -78,4 +76,4 @@ const signInAuthentication = (db, bcrypt) => (req, res) => {
         .catch((err) => res.status(400).json(err));
 };
 
-module.exports = { signInAuthentication };
+module.exports = { signInAuthentication, redisClient };
