@@ -31,7 +31,7 @@ app.get('/', function (req, res) {
 });
 
 // Option 1
-app.post('/signin', signin.handleSignin(knex, bcrypt));
+app.post('/signin', signin.signInAuthentication(knex, bcrypt));
 
 // Option 2
 app.post('/register', (req, res) =>
@@ -46,7 +46,7 @@ app.post('/imageurlfacedetect', (req, res) =>
   imageSubmit.handleApiCallFaceDetect(req, res)
 );
 
-app.get('/profile/:id', (req, res) => res.send('Work in progress.'));
+app.get('/profile/:id', (req, res) => profile.handleProfileGet(req, res, knex));
 app.post('/profile/:id', (req, res) =>
   profile.handleProfileUpdate(req, res, knex)
 );

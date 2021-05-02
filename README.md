@@ -14,10 +14,11 @@ You need to make and account and get an API key.
 
 ![Database](/images/database-dark-mode2.png)
 
-## Dependencies
+## Prerequisites
 
 - Node 14.5.0
 - PostgreSQL 13
+- Redis 6.0.9
 
 ## Development
 
@@ -27,7 +28,7 @@ You need to make and account and get an API key.
 
 `$ yarn start`
 
-For this to work locally you need to create a database in postgresql. For this, you can execute the SQL queries in `database.sql`. After creating the database, you need to add your information in `server.js`.
+For this to work locally you need to, have Redis running and you need to create a database in postgresql. For this, you can execute the SQL queries in `database.sql`. After creating the database, you need to add your information in `server.js`.
 
 For Heroku, we are going to use `process.env.DATABASE_URL`.
 
