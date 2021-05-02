@@ -19,7 +19,7 @@ function handleProfileUpdate(req, res, knex) {
   const { name, age, pet } = req.body.formInput;
   knex('users')
     .where({ id })
-    .update({ name: name })
+    .update({ name, age, pet })
     .then((resp) => {
       if (resp) {
         res.json('success');
