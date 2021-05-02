@@ -4,6 +4,7 @@ const cors = require('cors');
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const imageSubmit = require('./controllers/image');
+const profile = require('./controllers/profile');
 
 const knex = require('knex')({
   client: 'pg',
@@ -46,6 +47,9 @@ app.post('/imageurlfacedetect', (req, res) =>
 );
 
 app.get('/profile/:id', (req, res) => res.send('Work in progress.'));
+app.post('/profile/:id', (req, res) =>
+  profile.handleProfileUpdate(req, res, knex)
+);
 
 app.get('*', (req, res) => res.json('not found'));
 
