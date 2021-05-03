@@ -1,9 +1,12 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
+
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const imageSubmit = require('./controllers/image');
+const profile = require('./controllers/profile');
+const auth = require('./controllers/authorization');
 
 const knex = require('knex')({
   client: 'pg',
@@ -30,22 +33,29 @@ app.get('/', function (req, res) {
 });
 
 // Option 1
-app.post('/signin', signin.handleSignin(knex, bcrypt));
+app.post('/signin', signin.signInAuthentication(knex, bcrypt));
 
 // Option 2
 app.post('/register', (req, res) =>
   register.handleRegister(req, res, knex, bcrypt, saltRounds)
 );
 
-app.put('/image', (req, res) => imageSubmit.handleImageSubmit(req, res, knex));
-app.post('/imageurl', (req, res) =>
+app.put('/image', auth.requireAuth, (req, res) =>
+  imageSubmit.handleImageSubmit(req, res, knex)
+);
+app.post('/imageurl', auth.requireAuth, (req, res) =>
   imageSubmit.handleApiCallModeration(req, res)
 );
-app.post('/imageurlfacedetect', (req, res) =>
+app.post('/imageurlfacedetect', auth.requireAuth, (req, res) =>
   imageSubmit.handleApiCallFaceDetect(req, res)
 );
 
-app.get('/profile/:id', (req, res) => res.send('Work in progress.'));
+app.get('/profile/:id', auth.requireAuth, (req, res) =>
+  profile.handleProfileGet(req, res, knex)
+);
+app.post('/profile/:id', auth.requireAuth, (req, res) =>
+  profile.handleProfileUpdate(req, res, knex)
+);
 
 app.get('*', (req, res) => res.json('not found'));
 

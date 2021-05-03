@@ -14,4 +14,20 @@ function handleProfileGet(req, res, knex) {
     .catch((err) => res.status(400).json('error getting user'));
 }
 
-module.exports = { handleProfileGet };
+function handleProfileUpdate(req, res, knex) {
+  const { id } = req.params;
+  const { name, age, pet } = req.body.formInput;
+  knex('users')
+    .where({ id })
+    .update({ name, age, pet })
+    .then((resp) => {
+      if (resp) {
+        res.json('success');
+      } else {
+        res.status(400).json('Not found');
+      }
+    })
+    .catch((err) => res.status(400).json('error updating user'));
+}
+
+module.exports = { handleProfileGet, handleProfileUpdate };

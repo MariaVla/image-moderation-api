@@ -14,3 +14,8 @@ CREATE TABLE login (
   email text UNIQUE NOT NULL
 );
 
+ALTER TABLE users
+ADD age INT;
+
+ALTER TABLE users
+ADD pet VARCHAR(25);
