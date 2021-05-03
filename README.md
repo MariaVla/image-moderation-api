@@ -52,8 +52,3 @@ Make a `.env` file from `.env.sample` and add complete the keys.
 ## Deploy
 
 The app lives in Heroku. Pushes to `main` will trigger a deploy.
-
-## TODO
-
-- Deploy sessions branch and make it function in Heroku with Redis.
-- Implement Sign Out.
