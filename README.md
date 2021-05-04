@@ -54,3 +54,7 @@ Make a `.env` file from `.env.sample` and add complete the keys.
 The app lives in Heroku. Pushes to `main` will trigger a deploy.
 
 In Heroku you will need to add Postgresql and Redis Adds on. And also add CLARIFAI_API_KEY and JWT_SECRET_KEY environment variables
+
+## TODO
+
+- Improve Authorization
