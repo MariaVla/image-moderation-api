@@ -1,4 +1,4 @@
-# image-moderation-api
+# Image Moderation Api
 
 `Express` server that connects to a `postgresql` database.
 It uses `bcrypt` to store the passwords and `knex` to communicate with the database.
@@ -57,4 +57,6 @@ In Heroku you will need to add Postgresql and Redis Adds on. And also add CLARIF
 
 ## TODO
 
-- Improve Authorization
+- Improve Authorization.
+- Heroku remove their free tiers so this doesn't work anymore.
+- Host somewhere else or migrate to Nextj.js
